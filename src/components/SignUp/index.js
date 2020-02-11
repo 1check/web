@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
@@ -10,7 +10,7 @@ const INITIAL_STATE = {
     error: null
 };
 
-class SignUpFormBase extends React.Component {
+class SignUpFormBase extends Component {
     constructor(props) {
         super(props);
         this.state = { ...INITIAL_STATE };
@@ -25,11 +25,11 @@ class SignUpFormBase extends React.Component {
             this.setState({ error });
         });
         event.preventDefault();
-    }
+    };
 
     onChange = event => {
         this.setState({ [event.target.name]: event.target.value });
-    }
+    };
 
     render() {
         const {

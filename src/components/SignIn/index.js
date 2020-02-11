@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { withFirebase } from '../Firebase';
 
+import { PasswordForgetLink } from '../PasswordForget'
 import { SignUpLink } from '../SignUp';
 import * as ROUTES from '../../constants/routes';
 
@@ -11,7 +12,7 @@ const INITIAL_STATE = {
   error: null,
 };
 
-class SignInFormBase extends React.Component {
+class SignInFormBase extends Component {
     constructor(props) {
         super(props);
         this.state = { ...INITIAL_STATE };
@@ -69,6 +70,7 @@ const SignInPage = () => (
     <div>
         <h1>SignIn</h1>
         <SignInForm />
+        <PasswordForgetLink />
         <SignUpLink />
     </div>
 );
