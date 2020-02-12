@@ -9,7 +9,7 @@ import SignOutButton from '../SignOut';
 import * as ROUTES from '../../constants/routes';
 
 const NavigationAuth = () => (
-    <Nav className="justify-content-end p-5">
+    <Nav className="justify-content-end p-3">
         <Nav.Item>
             <Nav.Link className="navigation-link font-weight-light" as={NavLink} to={ROUTES.HOME}>Home</Nav.Link>
         </Nav.Item>
@@ -23,7 +23,7 @@ const NavigationAuth = () => (
 );
 
 const NavigationNonAuth = () => (
-    <Nav className="justify-content-end p-5">
+    <Nav className="justify-content-end p-3">
         <Nav.Item>
             <Nav.Link className="navigation-link font-weight-light" as={NavLink} to={ROUTES.SIGN_IN}>Sign In</Nav.Link>
         </Nav.Item>
