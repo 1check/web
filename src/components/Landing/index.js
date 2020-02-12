@@ -7,19 +7,28 @@ import './index.css';
 import * as ROUTES from '../../constants/routes';
 
 const Landing = () => (
-    <Container className="landing-container" fluid>
-        <Nav className="justify-content-end p-5">
-            <Nav.Item>
-                <Nav.Link className="landing-nav-link" as={NavLink} to={ROUTES.SIGN_IN}>Sign In</Nav.Link>
-            </Nav.Item>
-        </Nav>
+    <>
+        <Container className="landing-background-container" fluid>
+            <Nav className="justify-content-end p-5">
+                <Nav.Item>
+                    <Nav.Link className="landing-nav-link font-weight-light" as={NavLink} to={ROUTES.SIGN_IN}>Sign In</Nav.Link>
+                </Nav.Item>
+            </Nav>
 
-        <h2 className="landing-text text-center font-weight-light">
-            OneCheck, the perfect business opportunity.
-            <br/>
-            Get started now.
-        </h2>
-    </Container>
+            <h2 className="landing-text text-center font-weight-light">
+                OneCheck, the perfect business opportunity.<br/>
+                Get started now.
+            </h2>
+        </Container>
+
+        <div className="mt-4" />
+
+        <Container fluid>
+            <h2 className="text-center font-weight-light">
+                This is a text.
+            </h2>
+        </Container>
+    </>
 );
 
 export default Landing;

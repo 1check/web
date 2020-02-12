@@ -1,9 +1,9 @@
-.landing-container {
-    background-image:url('./landing.jpg');
-    background-repeat:no-repeat;
-    background-size:cover;
-    background-position:center;
-    min-width: 100vw;
+.landing-background-container {
+    background-image: url('./landing.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    min-width: 100%;
     min-height: 100vh;
 }
 
@@ -21,5 +21,5 @@
 
 .landing-text {
     color: white;
-    margin-top: 200px;
+    margin-top: 150px;
 }
