@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav'
+import Nav from 'react-bootstrap/Nav';
 
 import './index.css';
 import * as ROUTES from '../../constants/routes';

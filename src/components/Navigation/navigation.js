@@ -1,45 +1,47 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import './index.css'
+import { NavLink } from 'react-router-dom';
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import './index.css';
 
 import { AuthUserContext } from '../Session';
 import SignOutButton from '../SignOut';
 import * as ROUTES from '../../constants/routes';
 
 const NavigationAuth = () => (
-    <ul>
-        <li>
-            <Link to={ROUTES.LANDING}>Landing</Link>
-        </li>
-        <li>
-            <Link to={ROUTES.HOME}>Home</Link>
-        </li>
-        <li>
-            <Link to={ROUTES.ACCOUNT}>Account</Link>
-        </li>
-        <li>
+    <Nav className="justify-content-end p-5">
+        <Nav.Item>
+            <Nav.Link className="navigation-link font-weight-light" as={NavLink} to={ROUTES.LANDING}>Landing</Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+            <Nav.Link className="navigation-link font-weight-light" as={NavLink} to={ROUTES.HOME}>Home</Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+            <Nav.Link className="navigation-link font-weight-light" as={NavLink} to={ROUTES.ACCOUNT}>Account</Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
             <SignOutButton />
-        </li>
-    </ul>
+        </Nav.Item>
+    </Nav>
 );
 
 const NavigationNonAuth = () => (
-    <ul>
-        <li>
-            <Link to={ROUTES.SIGN_IN}>Sign In</Link>
-        </li>
-        <li>
-            <Link to={ROUTES.LANDING}>Landing</Link>
-        </li>
-    </ul>
+    <Nav className="justify-content-end p-5">
+        <Nav.Item>
+            <Nav.Link className="navigation-link font-weight-light" as={NavLink} to={ROUTES.SIGN_IN}>Sign In</Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+            <Nav.Link className="navigation-link font-weight-light" as={NavLink} to={ROUTES.LANDING}>Landing</Nav.Link>
+        </Nav.Item>
+    </Nav>
 );
 
 const Navigation = () => (
-    <div>
+    <Container fluid>
         <AuthUserContext.Consumer>
             { authUser => authUser ? <NavigationAuth /> : <NavigationNonAuth /> }
         </AuthUserContext.Consumer>
-    </div>
+    </Container>
 );
 
 export default Navigation;
