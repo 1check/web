@@ -11,9 +11,6 @@ import * as ROUTES from '../../constants/routes';
 const NavigationAuth = () => (
     <Nav className="justify-content-end p-5">
         <Nav.Item>
-            <Nav.Link className="navigation-link font-weight-light" as={NavLink} to={ROUTES.LANDING}>Landing</Nav.Link>
-        </Nav.Item>
-        <Nav.Item>
             <Nav.Link className="navigation-link font-weight-light" as={NavLink} to={ROUTES.HOME}>Home</Nav.Link>
         </Nav.Item>
         <Nav.Item>
