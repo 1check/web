@@ -1,0 +1,25 @@
+.landing-container {
+    background-image:url('./landing.jpg');
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-position:center;
+    min-width: 100vw;
+    min-height: 100vh;
+}
+
+.landing-nav-link {
+    font-size: 20px;
+    color: white;
+    text-decoration: none;
+}
+
+.landing-nav-link:hover {
+    color: white;
+    text-decoration: underline;
+    text-decoration-color: white;
+}
+
+.landing-text {
+    color: white;
+    margin-top: 200px;
+}

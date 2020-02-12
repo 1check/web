@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './index.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-import Navigation from '../Navigation';
+import { withNavigation } from '../Navigation';
 import LandingPage from '../Landing';
 import SignUpPage from '../SignUp';
 import SignInPage from '../SignIn';
@@ -19,16 +20,13 @@ class App extends Component {
         return (
             <Router>
                 <div>
-                    <Navigation />
-                    <hr />
-
                     <Route exact path={ROUTES.LANDING} component={LandingPage} />
-                    <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
-                    <Route path={ROUTES.SIGN_IN} component={SignInPage} />
-                    <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage} />
-                    <Route path={ROUTES.HOME} component={HomePage} />
-                    <Route path={ROUTES.ACCOUNT} component={AccountPage} />
-                    <Route path={ROUTES.ADMIN} component={AdminPage} />
+                    <Route path={ROUTES.SIGN_UP} component={withNavigation(SignUpPage)} />
+                    <Route path={ROUTES.SIGN_IN} component={withNavigation(SignInPage)} />
+                    <Route path={ROUTES.PASSWORD_FORGET} component={withNavigation(PasswordForgetPage)} />
+                    <Route path={ROUTES.HOME} component={withNavigation(HomePage)} />
+                    <Route path={ROUTES.ACCOUNT} component={withNavigation(AccountPage)} />
+                    <Route path={ROUTES.ADMIN} component={withNavigation(AdminPage)} />
                 </div>
             </Router>
         );
