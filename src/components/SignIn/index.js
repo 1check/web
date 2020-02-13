@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { withFirebase } from '../Firebase';
+import Container from 'react-bootstrap/Container';
+import Jumbotron from 'react-bootstrap/Jumbotron';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import './index.css';
 
 import { PasswordForgetLink } from '../PasswordForget'
 import { SignUpLink } from '../SignUp';
@@ -20,6 +25,7 @@ class SignInFormBase extends Component {
 
     onSubmit = event => {
         const { email, password } = this.state;
+        this.setState({ error: '' });
         this.props.firebase.doSignInWithEmailAndPassword(email, password).then(() => {
             this.setState({ ...INITIAL_STATE });
             this.props.history.push(ROUTES.HOME);
@@ -37,29 +43,23 @@ class SignInFormBase extends Component {
         const { email, password, error } = this.state;
         const isInvalid = password === '' || email === '';
         return (
-            <form onSubmit={this.onSubmit}>
-                <input
-                    name="email"
-                    value={email}
-                    onChange={this.onChange}
-                    type="text"
-                    placeholder="Email Address"
-                />
-                <br/>
-                <input
-                    name="password"
-                    value={password}
-                    onChange={this.onChange}
-                    type="password"
-                    placeholder="Password"
-                />
-                <br/>
-                <button disabled={isInvalid} type="submit">
-                    Sign In
-                </button>
+            <Form onSubmit={this.onSubmit}>
+                <Form.Group controlId="formBasicEmail">
+                    <Form.Label>Email address</Form.Label>
+                    <Form.Control type="email" name="email" onChange={this.onChange} placeholder="Enter email" />
+                    <Form.Text className="text-muted">
+                        We will never share your email with anyone else.
+                    </Form.Text>
+                </Form.Group>
 
-                {error && <p>{error.message}</p>}
-            </form>
+                <Form.Group controlId="formBasicPassword">
+                    <Form.Label>Password</Form.Label>
+                    <Form.Control type="password" name="password" onChange={this.onChange} placeholder="Password" />
+                </Form.Group>
+
+                <Button disabled={isInvalid} variant="primary" type="submit">Sign In</Button>
+                {error && <p className="sign-in-error mt-3">{error.message}</p>}
+            </Form>
         );
     }
 }
@@ -67,12 +67,16 @@ class SignInFormBase extends Component {
 const SignInForm = withRouter(withFirebase(SignInFormBase));
 
 const SignInPage = () => (
-    <div>
-        <h1>SignIn</h1>
-        <SignInForm />
-        <PasswordForgetLink />
-        <SignUpLink />
-    </div>
+    <Container className="sign-in-card">
+        <div className="mb-5" />
+        <Jumbotron className="shadow bg-white rounded">
+            <h2 className="mb-3">Sign In</h2>
+            <SignInForm />
+            <div className="mb-4" />
+            <PasswordForgetLink />
+            <SignUpLink />
+        </Jumbotron>
+    </Container>
 );
 
 export default SignInPage;
