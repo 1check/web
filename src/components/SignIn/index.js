@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-import { withFirebase } from '../Firebase';
 import Container from 'react-bootstrap/Container';
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import './index.css';
 
+import './index.css';
+import { withFirebase } from '../Firebase';
 import { PasswordForgetLink } from '../PasswordForget'
 import { SignUpLink } from '../SignUp';
 import * as ROUTES from '../../constants/routes';

@@ -1,5 +1,12 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
+import Container from 'react-bootstrap/Container';
+import Jumbotron from 'react-bootstrap/Jumbotron';
+import Form from 'react-bootstrap/Form';
+import Col from 'react-bootstrap/Col';
+import Button from 'react-bootstrap/Button';
+
+import './index.css';
 import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
 
@@ -47,37 +54,27 @@ class SignUpFormBase extends Component {
             email === '';
 
         return (
-            <form onSubmit={this.onSubmit}>
-                <input
-                    name="email"
-                    value={email}
-                    onChange={this.onChange}
-                    type="text"
-                    placeholder="Email Address"
-                />
-                <br/>
-                <input
-                    name="passwordOne"
-                    value={passwordOne}
-                    onChange={this.onChange}
-                    type="password"
-                    placeholder="Password"
-                />
-                <br/>
-                <input
-                    name="passwordTwo"
-                    value={passwordTwo}
-                    onChange={this.onChange}
-                    type="password"
-                    placeholder="Confirm Password"
-                />
-                <br/>
-                <button disabled={isInvalid} type="submit">
-                    Sign Up
-                </button>
+            <Form onSubmit={this.onSubmit}>
+                <Form.Group controlId="formBasicEmail">
+                    <Form.Label>Email address</Form.Label>
+                    <Form.Control type="email" name="email" onChange={this.onChange} placeholder="Enter email" />
+                </Form.Group>
 
-                { error ? <p>{error.message}</p> : ""}
-            </form>
+                <Form.Row>
+                    <Form.Group as={Col} controlId="formBasicPassword">
+                        <Form.Label>Password</Form.Label>
+                        <Form.Control type="password" name="passwordOne" onChange={this.onChange} placeholder="Password" />
+                    </Form.Group>
+
+                    <Form.Group as={Col} controlId="formBasicPassword">
+                        <Form.Label>Confirm Password</Form.Label>
+                        <Form.Control type="password" name="passwordTwo" onChange={this.onChange} placeholder="Confirm Password" />
+                    </Form.Group>
+                </Form.Row>
+
+                <Button disabled={isInvalid} variant="primary" type="submit">Sign Up</Button>
+                {error && <p className="sign-up-error mt-3">{error.message}</p>}
+            </Form>
         );
     }
 }
@@ -85,10 +82,13 @@ class SignUpFormBase extends Component {
 const SignUpForm = withRouter(withFirebase(SignUpFormBase));
 
 const SignUpPage = () => (
-    <div>
-        <h1>SignUp</h1>
-        <SignUpForm />
-    </div>
+    <Container className="sign-up-card">
+        <div className="mb-5" />
+        <Jumbotron className="shadow bg-white rounded">
+            <h2 className="mb-3">Sign Up</h2>
+            <SignUpForm />
+        </Jumbotron>
+    </Container>
 );
 
 const SignUpLink = () => (
