@@ -8,7 +8,8 @@ import { withFirebase } from '../Firebase';
 const INITIAL_STATE = {
     passwordOne: '',
     passwordTwo: '',
-    error: null
+    error: null,
+    success: null
 };
 
 class PasswordChangeForm extends Component {
@@ -20,7 +21,9 @@ class PasswordChangeForm extends Component {
     onSubmit = event => {
         const { passwordOne } = this.state;
         this.props.firebase.doPasswordUpdate(passwordOne).then(() => {
-            this.setState({ ...INITIAL_STATE });
+            const state = { ...INITIAL_STATE };
+            state.success = 'Password has been changed!';
+            this.setState(state);
         }).catch(error => {
             this.setState({ error });
         });
@@ -32,7 +35,7 @@ class PasswordChangeForm extends Component {
     };
 
     render() {
-        const { passwordOne, passwordTwo, error } = this.state;
+        const { passwordOne, passwordTwo, error, success } = this.state;
         const isInvalid = passwordOne !== passwordTwo || passwordOne === '';
         return (
             <Form onSubmit={this.onSubmit}>
@@ -48,6 +51,7 @@ class PasswordChangeForm extends Component {
                 <Button disabled={isInvalid} variant="primary" type="submit">Reset Password</Button>
 
                 {error && <p className="pw-change-error mt-3">{error.message}</p>}
+                {success && <p className="mt-3">{success}</p>}
             </Form>
         );
     }
