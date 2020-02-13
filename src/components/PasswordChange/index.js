@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 
+import './index.css';
 import { withFirebase } from '../Firebase';
 
 const INITIAL_STATE = {
@@ -32,29 +35,20 @@ class PasswordChangeForm extends Component {
         const { passwordOne, passwordTwo, error } = this.state;
         const isInvalid = passwordOne !== passwordTwo || passwordOne === '';
         return (
-            <form onSubmit={this.onSubmit}>
-                <input
-                    name="passwordOne"
-                    value={passwordOne}
-                    onChange={this.onChange}
-                    type="password"
-                    placeholder="New Password"
-                />
-                <br/>
-                <input
-                    name="passwordTwo"
-                    value={passwordTwo}
-                    onChange={this.onChange}
-                    type="password"
-                    placeholder="Confirm New Password"
-                />
-                <br/>
-                <button disabled={isInvalid} type="submit">
-                    Reset My Password
-                </button>
+            <Form onSubmit={this.onSubmit}>
+                <Form.Group>
+                    <Form.Label>New password</Form.Label>
+                    <Form.Control type="password" name="passwordOne" onChange={this.onChange} placeholder="Password" />
+                </Form.Group>
+                <Form.Group>
+                    <Form.Label>Confirm new password</Form.Label>
+                    <Form.Control type="password" name="passwordTwo" onChange={this.onChange} placeholder="Confirm password" />
+                </Form.Group>
 
-                {error && <p>{error.message}</p>}
-            </form>
+                <Button disabled={isInvalid} variant="primary" type="submit">Reset Password</Button>
+
+                {error && <p className="pw-change-error mt-3">{error.message}</p>}
+            </Form>
         );
     }
 }
