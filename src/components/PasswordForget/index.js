@@ -11,7 +11,8 @@ import * as ROUTES from '../../constants/routes';
 
 const INITIAL_STATE = {
     email: '',
-    error: null
+    error: null,
+    success: null
 };
 
 class PasswordForgetFormBase extends Component {
@@ -23,7 +24,9 @@ class PasswordForgetFormBase extends Component {
     onSubmit = event => {
         const { email } = this.state;
         this.props.firebase.doPasswordReset(email).then(() => {
-            this.setState({ ...INITIAL_STATE });
+            const state = { ...INITIAL_STATE };
+            state.success = 'Password recovery link sent!';
+            this.setState(state);
         }).catch(error => {
             this.setState({ error });
         });
@@ -35,7 +38,7 @@ class PasswordForgetFormBase extends Component {
     };
 
     render() {
-        const { email, error } = this.state;
+        const { email, error, success } = this.state;
         const isInvalid = email === '';
         return (
             <Form onSubmit={this.onSubmit}>
@@ -47,6 +50,7 @@ class PasswordForgetFormBase extends Component {
                 <Button disabled={isInvalid} variant="primary" type="submit">Recover password</Button>
 
                 {error && <p className="pw-forget-error mt-3">{error.message}</p>}
+                {success && <p className="mt-3">{success}</p>}
             </Form>
         );
     }
