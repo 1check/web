@@ -56,18 +56,18 @@ class SignUpFormBase extends Component {
 
         return (
             <Form onSubmit={this.onSubmit}>
-                <Form.Group controlId="formBasicEmail">
+                <Form.Group>
                     <Form.Label>Email address</Form.Label>
                     <Form.Control type="email" name="email" onChange={this.onChange} placeholder="Enter email" />
                 </Form.Group>
 
                 <Form.Row>
-                    <Form.Group as={Col} controlId="formBasicPassword">
+                    <Form.Group as={Col}>
                         <Form.Label>Password</Form.Label>
                         <Form.Control type="password" name="passwordOne" onChange={this.onChange} placeholder="Password" />
                     </Form.Group>
 
-                    <Form.Group as={Col} controlId="formBasicPassword">
+                    <Form.Group as={Col}>
                         <Form.Label>Confirm Password</Form.Label>
                         <Form.Control type="password" name="passwordTwo" onChange={this.onChange} placeholder="Confirm Password" />
                     </Form.Group>

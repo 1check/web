@@ -42,7 +42,7 @@ class PasswordForgetFormBase extends Component {
         const isInvalid = email === '';
         return (
             <Form onSubmit={this.onSubmit}>
-                <Form.Group controlId="formBasicEmail">
+                <Form.Group>
                     <Form.Label>Email address</Form.Label>
                     <Form.Control type="email" name="email" onChange={this.onChange} placeholder="Enter email" />
                 </Form.Group>

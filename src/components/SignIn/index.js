@@ -44,12 +44,12 @@ class SignInFormBase extends Component {
         const isInvalid = password === '' || email === '';
         return (
             <Form onSubmit={this.onSubmit}>
-                <Form.Group controlId="formBasicEmail">
+                <Form.Group>
                     <Form.Label>Email address</Form.Label>
                     <Form.Control type="email" name="email" onChange={this.onChange} placeholder="Enter email" />
                 </Form.Group>
 
-                <Form.Group controlId="formBasicPassword">
+                <Form.Group>
                     <Form.Label>Password</Form.Label>
                     <Form.Control type="password" name="password" onChange={this.onChange} placeholder="Password" />
                 </Form.Group>
