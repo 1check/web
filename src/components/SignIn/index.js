@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import Form from 'react-bootstrap/Form';
@@ -76,6 +76,12 @@ const SignInPage = () => (
     </Container>
 );
 
+const SignInLink = () => (
+    <p>
+        Alread have an account? <Link to={ROUTES.SIGN_IN}>Sign In</Link>
+    </p>
+);
+
 export default SignInPage;
 
-export { SignInForm };
+export { SignInForm, SignInLink };

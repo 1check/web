@@ -7,6 +7,7 @@ import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 
 import './index.css';
+import { SignInLink } from '../SignIn';
 import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
 
@@ -87,6 +88,8 @@ const SignUpPage = () => (
         <Jumbotron className="shadow bg-white rounded">
             <h2 className="mb-3">Sign Up</h2>
             <SignUpForm />
+            <div className="mb-4" />
+            <SignInLink />
         </Jumbotron>
     </Container>
 );
