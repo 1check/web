@@ -1,11 +1,11 @@
 .navigation-link {
     font-size: 20px;
-    color: black;
+    color: white;
     text-decoration: none;
 }
 
 .navigation-link:hover {
-    color: black;
+    color: white;
     text-decoration: underline;
-    text-decoration-color: black;
+    text-decoration-color: white;
 }
