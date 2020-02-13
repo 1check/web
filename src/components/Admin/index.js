@@ -1,6 +1,7 @@
 import React from 'react';
-import * as ROLES from '../../constants/roles';
+
 import { withAuthorization } from '../Session';
+import * as ROLES from '../../constants/roles';
 
 const AdminPage = () => (
     <div>

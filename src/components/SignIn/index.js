@@ -12,9 +12,9 @@ import { SignUpLink } from '../SignUp';
 import * as ROUTES from '../../constants/routes';
 
 const INITIAL_STATE = {
-  email: '',
-  password: '',
-  error: null,
+    email: '',
+    password: '',
+    error: null
 };
 
 class SignInFormBase extends Component {
