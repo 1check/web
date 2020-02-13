@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import Container from 'react-bootstrap/Container';
+import Jumbotron from 'react-bootstrap/Jumbotron';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 
+import './index.css';
 import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
 
@@ -33,21 +38,16 @@ class PasswordForgetFormBase extends Component {
         const { email, error } = this.state;
         const isInvalid = email === '';
         return (
-            <form onSubmit={this.onSubmit}>
-                <input
-                    name="email"
-                    value={this.state.email}
-                    onChange={this.onChange}
-                    type="text"
-                    placeholder="Email Address"
-                />
-                <br/>
-                <button disabled={isInvalid} type="submit">
-                    Reset My Password
-                </button>
+            <Form onSubmit={this.onSubmit}>
+                <Form.Group controlId="formBasicEmail">
+                    <Form.Label>Email address</Form.Label>
+                    <Form.Control type="email" name="email" onChange={this.onChange} placeholder="Enter email" />
+                </Form.Group>
 
-                {error && <p>{error.message}</p>}
-            </form>
+                <Button disabled={isInvalid} variant="primary" type="submit">Recover password</Button>
+
+                {error && <p className="pw-forget-error mt-3">{error.message}</p>}
+            </Form>
         );
     }
 }
@@ -55,10 +55,12 @@ class PasswordForgetFormBase extends Component {
 const PasswordForgetForm = withFirebase(PasswordForgetFormBase);
 
 const PasswordForgetPage = () => (
-    <div>
-        <h1>PasswordForget</h1>
-        <PasswordForgetForm />
-    </div>
+    <Container className="pw-forget-card">
+        <Jumbotron className="shadow bg-white rounded mt-5">
+            <h2 className="mb-3">Forgot password?</h2>
+            <PasswordForgetForm />
+        </Jumbotron>
+    </Container>
 );
 
 const PasswordForgetLink = () => (

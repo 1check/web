@@ -65,8 +65,7 @@ const SignInForm = withRouter(withFirebase(SignInFormBase));
 
 const SignInPage = () => (
     <Container className="sign-in-card">
-        <div className="mb-5" />
-        <Jumbotron className="shadow bg-white rounded">
+        <Jumbotron className="shadow bg-white rounded mt-5">
             <h2 className="mb-3">Sign In</h2>
             <SignInForm />
             <div className="mb-4" />
