@@ -16,6 +16,9 @@ const Footer = () => (
             <Row>
                 <Col><Link className="footer-link" to={ROUTES.CONTACT_US}>Contact us</Link></Col>
             </Row>
+            <Row>
+                <Col><Link className="footer-link" to={ROUTES.ABOUT_US}>About us</Link></Col>
+            </Row>
         </Container>
     </Container>
 );

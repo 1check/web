@@ -12,7 +12,6 @@ import PasswordForgetPage from '../PasswordForget';
 import HomePage from '../Home';
 import AccountPage from '../Account';
 import AdminPage from '../Admin';
-import Footer from '../Footer';
 import * as ROUTES from '../../constants/routes';
 
 const App = () => (
