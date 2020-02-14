@@ -4,7 +4,7 @@ const data = {
     // landing page
     landing_catch_phrase: 'OneCheck, des repas d\'affaires d\'exceptions.',
     // navigation
-    navigation_sign_in: 'Sign In',
+    navigation_sign_in: 'Se connecter',
     navigation_sign_up: 'Sign Up',
     navigation_sign_out: 'Sign Out',
     navigation_account: 'Account',

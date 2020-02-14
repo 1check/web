@@ -7,6 +7,7 @@ import { ALL, getCurrentLang, setLang } from '../../assets/lang';
 const LangDropDown = () => {
     const onItemSelected = (e1, event) => {
         setLang(event.target.name);
+        window.location.reload(); 
     };
 
     const listItems = Object.keys(ALL).map(lang =>
