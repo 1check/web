@@ -1,8 +1,6 @@
 import React from 'react';
 import Dropdown from 'react-bootstrap/Dropdown';
-import DropdownButton from 'react-bootstrap/DropdownButton';
 import Nav from 'react-bootstrap/Nav';
-import { NavLink } from 'react-router-dom';
 
 import '../Navigation/index.css';
 import { ALL, getCurrentLangLabel, setLang } from '../../assets/lang';
