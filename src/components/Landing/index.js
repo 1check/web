@@ -15,8 +15,7 @@ const Landing = () => (
         </Nav>
 
         <h2 className="landing-text text-center font-weight-light">
-            OneCheck, the perfect business opportunity.<br/>
-            Get started now.
+            OneCheck, the smart way for business meals.
         </h2>
     </Container>
 );
