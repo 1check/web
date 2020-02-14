@@ -10,8 +10,15 @@ import SignOutButton from '../SignOut';
 import STRINGS from '../../assets/lang';
 import * as ROUTES from '../../constants/routes';
 
+const BrandLink = () => (
+    <Nav.Item className="mr-auto">
+        <Nav.Link className="navigation-brand font-weight-light" as={NavLink} to={ROUTES.LANDING}>{STRINGS.app_name}</Nav.Link>
+    </Nav.Item>
+);
+
 const NavigationAuth = () => (
     <Nav className="justify-content-end p-3">
+        <BrandLink />
         <Nav.Item>
             <Nav.Link className="navigation-link font-weight-light" as={NavLink} to={ROUTES.HOME}>{STRINGS.navigation_home}</Nav.Link>
         </Nav.Item>
@@ -26,14 +33,12 @@ const NavigationAuth = () => (
 
 const NavigationNonAuth = () => (
     <Nav className="justify-content-end p-3">
+        <BrandLink />
         <Nav.Item>
             <LangDropDown />
         </Nav.Item>
         <Nav.Item>
             <Nav.Link className="navigation-link font-weight-light" as={NavLink} to={ROUTES.SIGN_IN}>{STRINGS.navigation_sign_in}</Nav.Link>
-        </Nav.Item>
-        <Nav.Item>
-            <Nav.Link className="navigation-link font-weight-light" as={NavLink} to={ROUTES.LANDING}>{STRINGS.navigation_landing}</Nav.Link>
         </Nav.Item>
     </Nav>
 );

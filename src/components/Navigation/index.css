@@ -9,3 +9,15 @@
     text-decoration: underline;
     text-decoration-color: white;
 }
+
+.navigation-brand {
+    font-size: 20px;
+    color: white;
+    text-decoration: none;
+}
+
+.navigation-brand:hover {
+    color: white;
+    text-decoration: none;
+    text-decoration-color: white;
+}
