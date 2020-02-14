@@ -15,5 +15,10 @@ const getLang = () => {
     return lang ? LANG[lang] : EN;
 }
 
-export { EN, FR, setLang };
+const getCurrentLang = () => {
+    const lang = localStorage.getItem('lang');
+    return lang ? lang : EN;
+}
+
+export { EN, FR, getCurrentLang, setLang };
 export default getLang();
