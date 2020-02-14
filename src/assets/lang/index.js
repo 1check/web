@@ -1,28 +1,28 @@
-import EN_T, { EN } from './en';
-import FR_T, { FR } from './fr';
+import EN, { EN_LABEL } from './en';
+import FR, { FR_LABEL } from './fr';
 
 const LANG = {
-    EN: EN_T,
-    FR: FR_T
+    [EN_LABEL]: EN,
+    [FR_LABEL]: FR
 };
 
-const ALL = {
-    EN, FR
-}
+const ALL = Object.keys(LANG);
 
 const setLang = (lang) => {
     localStorage.setItem('lang', lang);
-}
+};
 
 const getLang = () => {
     const lang = localStorage.getItem('lang');
-    return lang ? LANG[lang] : EN;
-}
+    const isValid = lang && ALL.includes(lang);
+    return isValid ? LANG[lang] : EN;
+};
 
-const getCurrentLang = () => {
+const getCurrentLangLabel = () => {
     const lang = localStorage.getItem('lang');
-    return lang ? lang : EN;
-}
+    const isValid = lang && ALL.includes(lang);
+    return isValid ? lang : EN_LABEL;
+};
 
-export { ALL, getCurrentLang, setLang };
+export { ALL, getCurrentLangLabel, setLang };
 export default getLang();

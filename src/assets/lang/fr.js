@@ -1,5 +1,5 @@
-const FR = 'FR';
-const data = {
+const FR_LABEL = 'FR';
+const FR = {
     app_name: 'OneCheck',
     // landing page
     landing_catch_phrase: 'OneCheck, des repas d\'affaires d\'exceptions.',
@@ -49,5 +49,5 @@ const data = {
     footer_about_us: 'About us'
 };
 
-export { FR };
-export default data;
+export { FR_LABEL };
+export default FR;
