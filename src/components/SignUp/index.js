@@ -10,6 +10,7 @@ import Spinner from 'react-bootstrap/Spinner';
 import './index.css';
 import { SignInLink } from '../SignIn';
 import { withFirebase } from '../Firebase';
+import STRINGS from '../../assets/lang';
 import * as ROUTES from '../../constants/routes';
 
 const INITIAL_STATE = {
@@ -61,24 +62,24 @@ class SignUpFormBase extends Component {
         return (
             <Form onSubmit={this.onSubmit}>
                 <Form.Group>
-                    <Form.Label>Email address</Form.Label>
-                    <Form.Control type="email" name="email" onChange={this.onChange} placeholder="Enter email" />
+                    <Form.Label>{STRINGS.sign_up_email_label}</Form.Label>
+                    <Form.Control type="email" name="email" onChange={this.onChange} placeholder={STRINGS.sign_up_email_hint} />
                 </Form.Group>
 
                 <Form.Row>
                     <Form.Group as={Col}>
-                        <Form.Label>Password</Form.Label>
-                        <Form.Control type="password" name="passwordOne" onChange={this.onChange} placeholder="Password" />
+                        <Form.Label>{STRINGS.sign_up_password_label}</Form.Label>
+                        <Form.Control type="password" name="passwordOne" onChange={this.onChange} placeholder={STRINGS.sign_up_password_hint} />
                     </Form.Group>
 
                     <Form.Group as={Col}>
-                        <Form.Label>Confirm Password</Form.Label>
-                        <Form.Control type="password" name="passwordTwo" onChange={this.onChange} placeholder="Confirm Password" />
+                        <Form.Label>{STRINGS.sign_up_confirm_password_label}</Form.Label>
+                        <Form.Control type="password" name="passwordTwo" onChange={this.onChange} placeholder={STRINGS.sign_up_confirm_password_hint} />
                     </Form.Group>
                 </Form.Row>
 
                 <Button disabled={isInvalid} variant="primary" type="submit">
-                    Sign Up
+                    {STRINGS.sign_up_button}
                     {clicked && <Spinner as="span" animation="grow" size="sm" />}
                 </Button>
                 {error && <p className="sign-up-error mt-3">{error.message}</p>}
@@ -93,7 +94,7 @@ const SignUpPage = () => (
     <Container className="sign-up-card">
         <div className="mb-5" />
         <Jumbotron className="shadow bg-white rounded">
-            <h2 className="mb-3">Sign Up</h2>
+            <h2 className="mb-3">{STRINGS.sign_up_title}</h2>
             <SignUpForm />
             <div className="mb-4" />
             <SignInLink />
@@ -103,7 +104,7 @@ const SignUpPage = () => (
 
 const SignUpLink = () => (
     <p>
-        Don't have an account? <Link to={ROUTES.SIGN_UP}>Sign Up</Link>
+        {STRINGS.sign_up_link_part1} <Link to={ROUTES.SIGN_UP}>{STRINGS.sign_up_link_part2}</Link>
     </p>
 );
 

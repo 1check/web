@@ -5,6 +5,7 @@ import Spinner from 'react-bootstrap/Spinner';
 
 import './index.css';
 import { withFirebase } from '../Firebase';
+import STRINGS from '../../assets/lang';
 
 const INITIAL_STATE = {
     passwordOne: '',
@@ -25,7 +26,7 @@ class PasswordChangeForm extends Component {
         this.setState({ clicked: true });
         this.props.firebase.doPasswordUpdate(passwordOne).then(() => {
             const state = { ...INITIAL_STATE };
-            state.success = 'Password has been changed!';
+            state.success = STRINGS.password_change_done;
             this.setState(state);
         }).catch(error => {
             this.setState({ error, clicked: false });
@@ -43,16 +44,16 @@ class PasswordChangeForm extends Component {
         return (
             <Form onSubmit={this.onSubmit}>
                 <Form.Group>
-                    <Form.Label>New password</Form.Label>
-                    <Form.Control type="password" name="passwordOne" onChange={this.onChange} placeholder="Password" />
+                    <Form.Label>{STRINGS.password_change_password_label}</Form.Label>
+                    <Form.Control type="password" name="passwordOne" onChange={this.onChange} placeholder={STRINGS.password_change_password_hint} />
                 </Form.Group>
                 <Form.Group>
-                    <Form.Label>Confirm new password</Form.Label>
-                    <Form.Control type="password" name="passwordTwo" onChange={this.onChange} placeholder="Confirm password" />
+                    <Form.Label>{STRINGS.password_change_confirm_password_label}</Form.Label>
+                    <Form.Control type="password" name="passwordTwo" onChange={this.onChange} placeholder={STRINGS.password_change_confirm_password_hint} />
                 </Form.Group>
 
                 <Button disabled={isInvalid} variant="primary" type="submit">
-                    Reset Password
+                    {STRINGS.password_change_button}
                     {clicked && <Spinner as="span" animation="grow" size="sm" />}
                 </Button>
 

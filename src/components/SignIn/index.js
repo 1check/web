@@ -10,6 +10,7 @@ import './index.css';
 import { withFirebase } from '../Firebase';
 import { PasswordForgetLink } from '../PasswordForget'
 import { SignUpLink } from '../SignUp';
+import STRINGS from '../../assets/lang';
 import * as ROUTES from '../../constants/routes';
 
 const INITIAL_STATE = {
@@ -47,17 +48,17 @@ class SignInFormBase extends Component {
         return (
             <Form onSubmit={this.onSubmit}>
                 <Form.Group>
-                    <Form.Label>Email address</Form.Label>
-                    <Form.Control type="email" name="email" onChange={this.onChange} placeholder="Enter email" />
+                    <Form.Label>{STRINGS.sign_in_email_label}</Form.Label>
+                    <Form.Control type="email" name="email" onChange={this.onChange} placeholder={STRINGS.sign_in_email_hint} />
                 </Form.Group>
 
                 <Form.Group>
-                    <Form.Label>Password</Form.Label>
-                    <Form.Control type="password" name="password" onChange={this.onChange} placeholder="Password" />
+                    <Form.Label>{STRINGS.sign_in_password_label}</Form.Label>
+                    <Form.Control type="password" name="password" onChange={this.onChange} placeholder={STRINGS.sign_in_password_hint} />
                 </Form.Group>
 
                 <Button disabled={isInvalid} variant="primary" type="submit">
-                    Sign In
+                    {STRINGS.sign_in_button}
                     {clicked && <Spinner as="span" animation="grow" size="sm" />}
                 </Button>
                 {error && <p className="sign-in-error mt-3">{error.message}</p>}
@@ -71,7 +72,7 @@ const SignInForm = withRouter(withFirebase(SignInFormBase));
 const SignInPage = () => (
     <Container className="sign-in-card">
         <Jumbotron className="shadow bg-white rounded mt-5">
-            <h2 className="mb-3">Sign In</h2>
+            <h2 className="mb-3">{STRINGS.sign_in_title}</h2>
             <SignInForm />
             <div className="mb-4" />
             <PasswordForgetLink />
@@ -82,7 +83,7 @@ const SignInPage = () => (
 
 const SignInLink = () => (
     <p>
-        Alread have an account? <Link to={ROUTES.SIGN_IN}>Sign In</Link>
+        {STRINGS.sign_in_link_part1} <Link to={ROUTES.SIGN_IN}>{STRINGS.sign_in_link_part2}</Link>
     </p>
 );
 

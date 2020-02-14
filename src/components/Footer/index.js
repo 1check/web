@@ -5,19 +5,20 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
 import './index.css';
+import STRINGS from '../../assets/lang';
 import * as ROUTES from '../../constants/routes';
 
 const Footer = () => (
     <Container className="footer-container p-3" fluid>
         <Container>
             <Row className="mb-3">
-                <Col><span className="footer-title">OneCheck</span></Col>
+                <Col><span className="footer-title">{STRINGS.app_name}</span></Col>
             </Row>
             <Row>
-                <Col><Link className="footer-link" to={ROUTES.CONTACT_US}>Contact us</Link></Col>
+                <Col><Link className="footer-link" to={ROUTES.CONTACT_US}>{STRINGS.footer_contact_us}</Link></Col>
             </Row>
             <Row>
-                <Col><Link className="footer-link" to={ROUTES.ABOUT_US}>About us</Link></Col>
+                <Col><Link className="footer-link" to={ROUTES.ABOUT_US}>{STRINGS.footer_about_us}</Link></Col>
             </Row>
         </Container>
     </Container>

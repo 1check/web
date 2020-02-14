@@ -8,6 +8,7 @@ import Spinner from 'react-bootstrap/Spinner';
 
 import './index.css';
 import { withFirebase } from '../Firebase';
+import STRINGS from '../../assets/lang';
 import * as ROUTES from '../../constants/routes';
 
 const INITIAL_STATE = {
@@ -28,7 +29,7 @@ class PasswordForgetFormBase extends Component {
         this.setState({ clicked: true });
         this.props.firebase.doPasswordReset(email).then(() => {
             const state = { ...INITIAL_STATE };
-            state.success = 'Password recovery link sent!';
+            state.success = STRINGS.password_forget_done;
             this.setState(state);
         }).catch(error => {
             this.setState({ error, clicked: false });
@@ -46,12 +47,12 @@ class PasswordForgetFormBase extends Component {
         return (
             <Form onSubmit={this.onSubmit}>
                 <Form.Group>
-                    <Form.Label>Email address</Form.Label>
-                    <Form.Control type="email" name="email" onChange={this.onChange} placeholder="Enter email" />
+                    <Form.Label>{STRINGS.password_forget_email_label}</Form.Label>
+                    <Form.Control type="email" name="email" onChange={this.onChange} placeholder={STRINGS.password_forget_email_hint} />
                 </Form.Group>
 
                 <Button disabled={isInvalid} variant="primary" type="submit">
-                    Recover password
+                    {STRINGS.password_forget_recover_button}
                     {clicked && <Spinner as="span" animation="grow" size="sm" />}
                 </Button>
 
@@ -67,7 +68,7 @@ const PasswordForgetForm = withFirebase(PasswordForgetFormBase);
 const PasswordForgetPage = () => (
     <Container className="pw-forget-card">
         <Jumbotron className="shadow bg-white rounded mt-5">
-            <h2 className="mb-3">Forgot password?</h2>
+            <h2 className="mb-3">{STRINGS.password_forget_title}</h2>
             <PasswordForgetForm />
         </Jumbotron>
     </Container>
@@ -75,7 +76,7 @@ const PasswordForgetPage = () => (
 
 const PasswordForgetLink = () => (
     <p>
-        <Link to={ROUTES.PASSWORD_FORGET}>Forgot Password?</Link>
+        <Link to={ROUTES.PASSWORD_FORGET}>{STRINGS.password_forget_link}</Link>
     </p>
 );
 
