@@ -38,12 +38,17 @@ const NavigationNonAuth = () => (
     </Nav>
 );
 
+const NavigationBar = () => (
+    <AuthUserContext.Consumer>
+        { authUser => authUser ? <NavigationAuth /> : <NavigationNonAuth /> }
+    </AuthUserContext.Consumer>
+);
+
 const Navigation = () => (
     <Container fluid>
-        <AuthUserContext.Consumer>
-            { authUser => authUser ? <NavigationAuth /> : <NavigationNonAuth /> }
-        </AuthUserContext.Consumer>
+        <NavigationBar />
     </Container>
 );
 
+export { NavigationBar };
 export default Navigation;

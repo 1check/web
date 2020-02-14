@@ -1,6 +1,6 @@
-import Navigation from './navigation';
+import Navigation, { NavigationBar } from './navigation';
 import withNavigation from './withNavigation';
 
-export { withNavigation };
+export { NavigationBar, withNavigation };
 
 export default Navigation;
