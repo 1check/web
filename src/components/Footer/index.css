@@ -1,0 +1,16 @@
+.footer-container {
+    background-color: white;
+}
+
+.footer-title {
+    color: #484848;
+    font-size: 18px;
+}
+
+.footer-link {
+    color: #767676;
+}
+
+.footer-link:hover {
+    color: #767676;
+}
