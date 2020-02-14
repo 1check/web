@@ -8,7 +8,7 @@ import * as ROUTES from '../../constants/routes';
 
 const Landing = () => (
     <Container className="landing-background-container" fluid>
-        <Nav className="justify-content-end p-5">
+        <Nav className="justify-content-end p-3">
             <Nav.Item>
                 <Nav.Link className="landing-nav-link font-weight-light" as={NavLink} to={ROUTES.SIGN_IN}>Sign In</Nav.Link>
             </Nav.Item>
