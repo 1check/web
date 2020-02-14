@@ -5,6 +5,7 @@ import Nav from 'react-bootstrap/Nav';
 
 import './index.css';
 import { AuthUserContext } from '../Session';
+import LangDropDown from '../LangDropDown';
 import SignOutButton from '../SignOut';
 import STRINGS from '../../assets/lang';
 import * as ROUTES from '../../constants/routes';
@@ -25,6 +26,9 @@ const NavigationAuth = () => (
 
 const NavigationNonAuth = () => (
     <Nav className="justify-content-end p-3">
+        <Nav.Item>
+            <LangDropDown />
+        </Nav.Item>
         <Nav.Item>
             <Nav.Link className="navigation-link font-weight-light" as={NavLink} to={ROUTES.SIGN_IN}>{STRINGS.navigation_sign_in}</Nav.Link>
         </Nav.Item>
