@@ -6,6 +6,10 @@ const LANG = {
     FR: FR_T
 };
 
+const ALL = {
+    EN, FR
+}
+
 const setLang = (lang) => {
     localStorage.setItem('lang', lang);
 }
@@ -20,5 +24,5 @@ const getCurrentLang = () => {
     return lang ? lang : EN;
 }
 
-export { EN, FR, getCurrentLang, setLang };
+export { ALL, getCurrentLang, setLang };
 export default getLang();
