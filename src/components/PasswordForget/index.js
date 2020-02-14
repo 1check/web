@@ -4,6 +4,7 @@ import Container from 'react-bootstrap/Container';
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import Spinner from 'react-bootstrap/Spinner';
 
 import './index.css';
 import { withFirebase } from '../Firebase';
@@ -12,7 +13,8 @@ import * as ROUTES from '../../constants/routes';
 const INITIAL_STATE = {
     email: '',
     error: null,
-    success: null
+    success: null,
+    clicked: false
 };
 
 class PasswordForgetFormBase extends Component {
@@ -23,12 +25,13 @@ class PasswordForgetFormBase extends Component {
 
     onSubmit = event => {
         const { email } = this.state;
+        this.setState({ clicked: true });
         this.props.firebase.doPasswordReset(email).then(() => {
             const state = { ...INITIAL_STATE };
             state.success = 'Password recovery link sent!';
             this.setState(state);
         }).catch(error => {
-            this.setState({ error });
+            this.setState({ error, clicked: false });
         });
         event.preventDefault();
     };
@@ -38,7 +41,7 @@ class PasswordForgetFormBase extends Component {
     };
 
     render() {
-        const { email, error, success } = this.state;
+        const { email, error, success, clicked } = this.state;
         const isInvalid = email === '';
         return (
             <Form onSubmit={this.onSubmit}>
@@ -47,7 +50,10 @@ class PasswordForgetFormBase extends Component {
                     <Form.Control type="email" name="email" onChange={this.onChange} placeholder="Enter email" />
                 </Form.Group>
 
-                <Button disabled={isInvalid} variant="primary" type="submit">Recover password</Button>
+                <Button disabled={isInvalid} variant="primary" type="submit">
+                    Recover password
+                    {clicked && <Spinner as="span" animation="grow" size="sm" />}
+                </Button>
 
                 {error && <p className="pw-forget-error mt-3">{error.message}</p>}
                 {success && <p className="mt-3">{success}</p>}

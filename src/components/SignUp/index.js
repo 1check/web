@@ -5,6 +5,7 @@ import Jumbotron from 'react-bootstrap/Jumbotron';
 import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
+import Spinner from 'react-bootstrap/Spinner';
 
 import './index.css';
 import { SignInLink } from '../SignIn';
@@ -15,7 +16,8 @@ const INITIAL_STATE = {
     email: '',
     passwordOne: '',
     passwordTwo: '',
-    error: null
+    error: null,
+    clicked: false
 };
 
 class SignUpFormBase extends Component {
@@ -26,13 +28,14 @@ class SignUpFormBase extends Component {
 
     onSubmit = event => {
         const { email, passwordOne } = this.state;
+        this.setState({ clicked: true });
         this.props.firebase.doCreateUserWithEmailAndPassword(email, passwordOne).then(authUser => {
             return this.props.firebase.user(authUser.user.uid).set({ email });
         }).then(() => {
             this.setState({ ...INITIAL_STATE });
             this.props.history.push(ROUTES.HOME);
         }).catch(error => {
-            this.setState({ error });
+            this.setState({ error, clicked: false });
         });
         event.preventDefault();
     };
@@ -46,7 +49,8 @@ class SignUpFormBase extends Component {
             email,
             passwordOne,
             passwordTwo,
-            error
+            error,
+            clicked
         } = this.state;
 
         const isInvalid =
@@ -73,7 +77,10 @@ class SignUpFormBase extends Component {
                     </Form.Group>
                 </Form.Row>
 
-                <Button disabled={isInvalid} variant="primary" type="submit">Sign Up</Button>
+                <Button disabled={isInvalid} variant="primary" type="submit">
+                    Sign Up
+                    {clicked && <Spinner as="span" animation="grow" size="sm" />}
+                </Button>
                 {error && <p className="sign-up-error mt-3">{error.message}</p>}
             </Form>
         );

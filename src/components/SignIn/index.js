@@ -4,6 +4,7 @@ import Container from 'react-bootstrap/Container';
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import Spinner from 'react-bootstrap/Spinner';
 
 import './index.css';
 import { withFirebase } from '../Firebase';
@@ -14,7 +15,8 @@ import * as ROUTES from '../../constants/routes';
 const INITIAL_STATE = {
     email: '',
     password: '',
-    error: null
+    error: null,
+    clicked: false
 };
 
 class SignInFormBase extends Component {
@@ -25,12 +27,12 @@ class SignInFormBase extends Component {
 
     onSubmit = event => {
         const { email, password } = this.state;
-        this.setState({ error: '' });
+        this.setState({ clicked: true, error: '' });
         this.props.firebase.doSignInWithEmailAndPassword(email, password).then(() => {
             this.setState({ ...INITIAL_STATE });
             this.props.history.push(ROUTES.HOME);
         }).catch(error => {
-            this.setState({ error });
+            this.setState({ clicked: false, error });
         });
         event.preventDefault();
     };
@@ -40,7 +42,7 @@ class SignInFormBase extends Component {
     };
 
     render() {
-        const { email, password, error } = this.state;
+        const { email, password, error, clicked } = this.state;
         const isInvalid = password === '' || email === '';
         return (
             <Form onSubmit={this.onSubmit}>
@@ -54,7 +56,10 @@ class SignInFormBase extends Component {
                     <Form.Control type="password" name="password" onChange={this.onChange} placeholder="Password" />
                 </Form.Group>
 
-                <Button disabled={isInvalid} variant="primary" type="submit">Sign In</Button>
+                <Button disabled={isInvalid} variant="primary" type="submit">
+                    Sign In
+                    {clicked && <Spinner as="span" animation="grow" size="sm" />}
+                </Button>
                 {error && <p className="sign-in-error mt-3">{error.message}</p>}
             </Form>
         );

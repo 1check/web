@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import Spinner from 'react-bootstrap/Spinner';
 
 import './index.css';
 import { withFirebase } from '../Firebase';
@@ -9,7 +10,8 @@ const INITIAL_STATE = {
     passwordOne: '',
     passwordTwo: '',
     error: null,
-    success: null
+    success: null,
+    clicked: false
 };
 
 class PasswordChangeForm extends Component {
@@ -20,12 +22,13 @@ class PasswordChangeForm extends Component {
 
     onSubmit = event => {
         const { passwordOne } = this.state;
+        this.setState({ clicked: true });
         this.props.firebase.doPasswordUpdate(passwordOne).then(() => {
             const state = { ...INITIAL_STATE };
             state.success = 'Password has been changed!';
             this.setState(state);
         }).catch(error => {
-            this.setState({ error });
+            this.setState({ error, clicked: false });
         });
         event.preventDefault();
     };
@@ -35,7 +38,7 @@ class PasswordChangeForm extends Component {
     };
 
     render() {
-        const { passwordOne, passwordTwo, error, success } = this.state;
+        const { passwordOne, passwordTwo, error, success, clicked } = this.state;
         const isInvalid = passwordOne !== passwordTwo || passwordOne === '';
         return (
             <Form onSubmit={this.onSubmit}>
@@ -48,7 +51,10 @@ class PasswordChangeForm extends Component {
                     <Form.Control type="password" name="passwordTwo" onChange={this.onChange} placeholder="Confirm password" />
                 </Form.Group>
 
-                <Button disabled={isInvalid} variant="primary" type="submit">Reset Password</Button>
+                <Button disabled={isInvalid} variant="primary" type="submit">
+                    Reset Password
+                    {clicked && <Spinner as="span" animation="grow" size="sm" />}
+                </Button>
 
                 {error && <p className="pw-change-error mt-3">{error.message}</p>}
                 {success && <p className="mt-3">{success}</p>}
