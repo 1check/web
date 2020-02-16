@@ -20,6 +20,9 @@ const NavigationAuth = () => (
     <Nav className="justify-content-end p-3">
         <BrandLink />
         <Nav.Item>
+            <LangDropDown />
+        </Nav.Item>
+        <Nav.Item>
             <Nav.Link className="navigation-link font-weight-light" as={NavLink} to={ROUTES.HOME}>{STRINGS.navigation_home}</Nav.Link>
         </Nav.Item>
         <Nav.Item>
