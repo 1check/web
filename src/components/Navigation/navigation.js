@@ -61,7 +61,7 @@ const Navigation = (props) => {
     return (
         <Container className="navigation-container" fluid>
             <AuthUserContext.Consumer>
-                { authUser => authUser ? <NavigationAuth {...props} /> : <NavigationNonAuth {...props} /> }
+                { authUser => authUser ? <NavigationAuth /> : <NavigationNonAuth /> }
             </AuthUserContext.Consumer>
         </Container>
     );
