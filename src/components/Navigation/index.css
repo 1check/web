@@ -1,31 +1,35 @@
+:root {
+    --color-navigation-link: white;
+}
+
 .navigation-link {
     font-size: 20px;
     padding-bottom: 8px;
     padding-top: 8px;
-    color: white;
+    color: var(--color-navigation-link);
     border-bottom-color: transparent;
     border-bottom-style: solid;
     border-bottom-width: 2px;
 }
 
 .navigation-link:hover {
-    color: white;
+    color: var(--color-navigation-link);
     text-decoration: none;
-    border-bottom-color: white;
+    border-bottom-color: var(--color-navigation-link);
     border-bottom-style: solid;
     border-bottom-width: 2px;
 }
 
 .navigation-brand {
     font-size: 20px;
-    color: white;
+    color: var(--color-navigation-link);
     text-decoration: none;
     padding-bottom: 8px;
     padding-top: 8px;
 }
 
 .navigation-brand:hover {
-    color: white;
+    color: var(--color-navigation-link);
     text-decoration: none;
-    text-decoration-color: white;
+    text-decoration-color: var(--color-navigation-link);
 }

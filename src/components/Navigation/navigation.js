@@ -4,11 +4,21 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 
 import './index.css';
+import themes from './themes';
 import { AuthUserContext } from '../Session';
 import LangDropDown from '../LangDropDown';
 import SignOutButton from '../SignOut';
 import STRINGS from '../../assets/lang';
 import * as ROUTES from '../../constants/routes';
+
+const setTheme = props => {
+    const theme = props.theme ? props.theme : themes.light;
+    Object.keys(theme).forEach(key => {
+        const value = theme[key];
+        console.log(document.documentElement);
+        document.documentElement.style.setProperty(key, value);
+    });
+};
 
 const BrandLink = () => (
     <Nav.Item className="mr-auto">
@@ -17,7 +27,7 @@ const BrandLink = () => (
 );
 
 const NavigationAuth = () => (
-    <Nav className="justify-content-end p-3">
+    <Nav id="nav-container" className="navigation-container justify-content-end p-3">
         <BrandLink />
         <Nav.Item>
             <LangDropDown />
@@ -35,7 +45,7 @@ const NavigationAuth = () => (
 );
 
 const NavigationNonAuth = () => (
-    <Nav className="justify-content-end p-3">
+    <Nav id="nav-container" className="navigation-container justify-content-end p-3">
         <BrandLink />
         <Nav.Item>
             <LangDropDown />
@@ -46,17 +56,15 @@ const NavigationNonAuth = () => (
     </Nav>
 );
 
-const NavigationBar = () => (
-    <AuthUserContext.Consumer>
-        { authUser => authUser ? <NavigationAuth /> : <NavigationNonAuth /> }
-    </AuthUserContext.Consumer>
-);
+const Navigation = (props) => {
+    setTheme(props);
+    return (
+        <Container fluid>
+            <AuthUserContext.Consumer>
+                { authUser => authUser ? <NavigationAuth {...props} /> : <NavigationNonAuth {...props} /> }
+            </AuthUserContext.Consumer>
+        </Container>
+    );
+}
 
-const Navigation = () => (
-    <Container fluid>
-        <NavigationBar />
-    </Container>
-);
-
-export { NavigationBar };
 export default Navigation;

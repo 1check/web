@@ -1,9 +1,9 @@
 import React from 'react';
 import Navigation from './navigation';
 
-const withNavigation = Component => props => (
+const withNavigation = (Component, theme) => props => (
     <>
-        <Navigation />
+        <Navigation theme={theme} />
         <Component {...props} />
     </>
 );

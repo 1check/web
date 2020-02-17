@@ -1,6 +1,7 @@
-import Navigation, { NavigationBar } from './navigation';
+import Navigation from './navigation';
 import withNavigation from './withNavigation';
+import themes from './themes';
 
-export { NavigationBar, withNavigation };
+export { withNavigation, themes };
 
 export default Navigation;
