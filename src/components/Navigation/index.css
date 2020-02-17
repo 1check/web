@@ -1,5 +1,7 @@
 :root {
     --color-navigation-link: white;
+    --color-navigation-background: transparent;
+    --color-navigation-separator: transparent;
 }
 
 .navigation-link {
@@ -32,4 +34,10 @@
     color: var(--color-navigation-link);
     text-decoration: none;
     text-decoration-color: var(--color-navigation-link);
+}
+
+.navigation-separator {
+    border-bottom-color: var(--color-navigation-separator);
+    border-bottom-width: thin;
+    border-bottom-style: solid;
 }
