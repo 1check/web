@@ -1,13 +1,12 @@
 import React from 'react';
-import Button from 'react-bootstrap/Button';
+import Nav from 'react-bootstrap/Nav';
 
 import { withFirebase } from '../Firebase';
-import '../Navigation/index.css';
 import './index.css';
 import STRINGS from '../../assets/lang';
 
-const SignOutButton = ({ firebase }) => (
-    <Button variant="primary" className="navigation-link sign-out-link font-weight-light" onClick={firebase.doSignOut}>{STRINGS.navigation_sign_out}</Button>
+const SignOutLink = (props) => (
+    <Nav.Link className={`${props.className} sign-out-link`} onClick={props.firebase.doSignOut}>{STRINGS.navigation_sign_out}</Nav.Link>
 );
 
-export default withFirebase(SignOutButton);
+export default withFirebase(SignOutLink);

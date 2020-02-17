@@ -3,33 +3,31 @@
     --color-navigation-background: transparent;
     --color-navigation-separator: transparent;
     --size-navigation-link: 20px;
-    --size-navigation-separator: 3px;
+    --size-navigation-separator: 1px;
+    --size-navigation-padding: 25px;
+    --size-navigation-underline: 2px;
 }
 
 .navigation-link {
     font-size: var(--size-navigation-link);
-    padding-bottom: 8px;
-    padding-top: 8px;
+    padding: var(--size-navigation-padding);
     color: var(--color-navigation-link);
     border-bottom-color: transparent;
     border-bottom-style: solid;
-    border-bottom-width: 2px;
+    border-bottom-width: var(--size-navigation-underline);
 }
 
 .navigation-link:hover {
     color: var(--color-navigation-link);
     text-decoration: none;
     border-bottom-color: var(--color-navigation-link);
-    border-bottom-style: solid;
-    border-bottom-width: 2px;
 }
 
 .navigation-brand {
     font-size: var(--size-navigation-link);
     color: var(--color-navigation-link);
     text-decoration: none;
-    padding-bottom: 8px;
-    padding-top: 8px;
+    padding: var(--size-navigation-padding);
 }
 
 .navigation-brand:hover {

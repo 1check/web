@@ -7,7 +7,7 @@ import './index.css';
 import themes from './themes';
 import { AuthUserContext } from '../Session';
 import LangDropDown from '../LangDropDown';
-import SignOutButton from '../SignOut';
+import SignOutLink from '../SignOut';
 import STRINGS from '../../assets/lang';
 import * as ROUTES from '../../constants/routes';
 
@@ -25,10 +25,10 @@ const BrandLink = () => (
 );
 
 const NavigationAuth = () => (
-    <Nav className="justify-content-end p-3">
+    <Nav className="justify-content-end">
         <BrandLink />
         <Nav.Item>
-            <LangDropDown />
+            <LangDropDown className="navigation-link font-weight-light" />
         </Nav.Item>
         <Nav.Item>
             <Nav.Link className="navigation-link font-weight-light" as={NavLink} to={ROUTES.HOME}>{STRINGS.navigation_home}</Nav.Link>
@@ -37,16 +37,16 @@ const NavigationAuth = () => (
             <Nav.Link className="navigation-link font-weight-light" as={NavLink} to={ROUTES.ACCOUNT}>{STRINGS.navigation_account}</Nav.Link>
         </Nav.Item>
         <Nav.Item>
-            <SignOutButton />
+            <SignOutLink className="navigation-link font-weight-light" />
         </Nav.Item>
     </Nav>
 );
 
 const NavigationNonAuth = () => (
-    <Nav className="justify-content-end p-3">
+    <Nav className="justify-content-end">
         <BrandLink />
         <Nav.Item>
-            <LangDropDown />
+            <LangDropDown className="navigation-link font-weight-light" />
         </Nav.Item>
         <Nav.Item>
             <Nav.Link className="navigation-link font-weight-light" as={NavLink} to={ROUTES.SIGN_IN}>{STRINGS.navigation_sign_in}</Nav.Link>

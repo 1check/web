@@ -5,8 +5,8 @@ import Nav from 'react-bootstrap/Nav';
 import '../Navigation/index.css';
 import { ALL, getCurrentLangLabel, setLang } from '../../assets/lang';
 
-const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
-    <Nav.Link className="navigation-link" href="" ref={ref} onClick={e => {
+const CustomToggle = props => React.forwardRef(({ children, onClick }, ref) => (
+    <Nav.Link {...props} href="" ref={ref} onClick={e => {
             e.preventDefault();
             onClick(e);
         }}
@@ -15,7 +15,7 @@ const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
     </Nav.Link>
 ));
 
-const LangDropDown = () => {
+const LangDropDown = (props) => {
     const onItemSelected = (e1, event) => {
         setLang(event.target.name);
         window.location.reload();
@@ -29,7 +29,7 @@ const LangDropDown = () => {
 
     return (
         <Dropdown>
-            <Dropdown.Toggle as={CustomToggle}>
+            <Dropdown.Toggle as={CustomToggle(props)}>
                 {getCurrentLangLabel()}
             </Dropdown.Toggle>
 

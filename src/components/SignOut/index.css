@@ -1,14 +1,12 @@
 .sign-out-link {
     color: red;
-    background-color: transparent;
-    border-color: transparent;
-    padding-left: 10px;
-    padding-right: 10px;
+    border-bottom-color: transparent;
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
 }
 
 .sign-out-link:hover {
-    color: white;
-    background-color: red;
-    border-color: red;
+    color: red;
+    border-bottom-color: red;
     text-decoration: none;
 }
