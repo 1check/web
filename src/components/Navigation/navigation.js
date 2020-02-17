@@ -59,13 +59,11 @@ const NavigationNonAuth = () => (
 const Navigation = (props) => {
     setTheme(props);
     return (
-        <>
-            <Container className="navigation-container" fluid>
-                <AuthUserContext.Consumer>
-                    { authUser => authUser ? <NavigationAuth {...props} /> : <NavigationNonAuth {...props} /> }
-                </AuthUserContext.Consumer>
-            </Container>
-        </>
+        <Container className="navigation-container" fluid>
+            <AuthUserContext.Consumer>
+                { authUser => authUser ? <NavigationAuth {...props} /> : <NavigationNonAuth {...props} /> }
+            </AuthUserContext.Consumer>
+        </Container>
     );
 }
 
