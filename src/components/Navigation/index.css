@@ -2,10 +2,12 @@
     --color-navigation-link: white;
     --color-navigation-background: transparent;
     --color-navigation-separator: transparent;
+    --size-navigation-link: 20px;
+    --size-navigation-separator: 3px;
 }
 
 .navigation-link {
-    font-size: 20px;
+    font-size: var(--size-navigation-link);
     padding-bottom: 8px;
     padding-top: 8px;
     color: var(--color-navigation-link);
@@ -23,7 +25,7 @@
 }
 
 .navigation-brand {
-    font-size: 20px;
+    font-size: var(--size-navigation-link);
     color: var(--color-navigation-link);
     text-decoration: none;
     padding-bottom: 8px;
@@ -39,6 +41,6 @@
 .navigation-container {
     background-color: var(--color-navigation-background);
     border-bottom-color: var(--color-navigation-separator);
-    border-bottom-width: thin;
+    border-bottom-width: var(--size-navigation-separator);
     border-bottom-style: solid;
 }
