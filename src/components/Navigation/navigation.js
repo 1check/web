@@ -20,7 +20,7 @@ const setTheme = props => {
 
 const BrandLink = () => (
     <Nav.Item className="mr-auto">
-        <Nav.Link className="navigation-brand font-weight-light" as={NavLink} to={ROUTES.LANDING}>{STRINGS.app_name}</Nav.Link>
+        <Nav.Link className="navigation-brand" as={NavLink} to={ROUTES.LANDING}>{STRINGS.app_name}</Nav.Link>
     </Nav.Item>
 );
 
@@ -28,16 +28,16 @@ const NavigationAuth = () => (
     <Nav className="justify-content-end">
         <BrandLink />
         <Nav.Item>
-            <LangDropDown className="navigation-link font-weight-light" />
+            <LangDropDown className="navigation-link" />
         </Nav.Item>
         <Nav.Item>
-            <Nav.Link className="navigation-link font-weight-light" as={NavLink} to={ROUTES.HOME}>{STRINGS.navigation_home}</Nav.Link>
+            <Nav.Link className="navigation-link" as={NavLink} to={ROUTES.HOME}>{STRINGS.navigation_home}</Nav.Link>
         </Nav.Item>
         <Nav.Item>
-            <Nav.Link className="navigation-link font-weight-light" as={NavLink} to={ROUTES.ACCOUNT}>{STRINGS.navigation_account}</Nav.Link>
+            <Nav.Link className="navigation-link" as={NavLink} to={ROUTES.ACCOUNT}>{STRINGS.navigation_account}</Nav.Link>
         </Nav.Item>
         <Nav.Item>
-            <SignOutLink className="navigation-link font-weight-light" />
+            <SignOutLink className="navigation-link" />
         </Nav.Item>
     </Nav>
 );
@@ -46,10 +46,10 @@ const NavigationNonAuth = () => (
     <Nav className="justify-content-end">
         <BrandLink />
         <Nav.Item>
-            <LangDropDown className="navigation-link font-weight-light" />
+            <LangDropDown className="navigation-link" />
         </Nav.Item>
         <Nav.Item>
-            <Nav.Link className="navigation-link font-weight-light" as={NavLink} to={ROUTES.SIGN_IN}>{STRINGS.navigation_sign_in}</Nav.Link>
+            <Nav.Link className="navigation-link" as={NavLink} to={ROUTES.SIGN_IN}>{STRINGS.navigation_sign_in}</Nav.Link>
         </Nav.Item>
     </Nav>
 );
