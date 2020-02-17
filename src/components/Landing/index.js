@@ -7,7 +7,7 @@ import STRINGS from '../../assets/lang';
 
 const Landing = () => (
     <Container className="landing-background-container" fluid>
-        <Navigation theme={themes.light} />
+        <Navigation theme={themes.dark} />
         <h2 className="landing-text text-center font-weight-light">
             {STRINGS.landing_catch_phrase}
         </h2>

@@ -1,10 +1,10 @@
 export default {
-    light: {
+    dark: {
         '--color-navigation-link': 'white',
         '--color-navigation-background': 'transparent',
         '--color-navigation-separator': 'transparent'
     },
-    dark: {
+    light: {
         '--color-navigation-link': 'black',
         '--color-navigation-background': 'white',
         '--color-navigation-separator': '#DCDCDC'

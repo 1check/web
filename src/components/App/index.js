@@ -18,12 +18,12 @@ const App = () => (
     <Router>
         <div className="app-container">
             <Route exact path={ROUTES.LANDING} component={LandingPage} />
-            <Route path={ROUTES.SIGN_UP} component={withNavigation(SignUpPage, themes.dark)} />
-            <Route path={ROUTES.SIGN_IN} component={withNavigation(SignInPage, themes.dark)} />
-            <Route path={ROUTES.PASSWORD_FORGET} component={withNavigation(PasswordForgetPage, themes.dark)} />
-            <Route path={ROUTES.HOME} component={withNavigation(HomePage, themes.dark)} />
-            <Route path={ROUTES.ACCOUNT} component={withNavigation(AccountPage, themes.dark)} />
-            <Route path={ROUTES.ADMIN} component={withNavigation(AdminPage, themes.dark)} />
+            <Route path={ROUTES.SIGN_UP} component={withNavigation(SignUpPage, themes.light)} />
+            <Route path={ROUTES.SIGN_IN} component={withNavigation(SignInPage, themes.light)} />
+            <Route path={ROUTES.PASSWORD_FORGET} component={withNavigation(PasswordForgetPage, themes.light)} />
+            <Route path={ROUTES.HOME} component={withNavigation(HomePage, themes.light)} />
+            <Route path={ROUTES.ACCOUNT} component={withNavigation(AccountPage, themes.light)} />
+            <Route path={ROUTES.ADMIN} component={withNavigation(AdminPage, themes.light)} />
         </div>
     </Router>
 );
