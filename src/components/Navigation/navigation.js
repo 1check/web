@@ -14,9 +14,7 @@ import * as ROUTES from '../../constants/routes';
 const setTheme = props => {
     const theme = props.theme ? props.theme : themes.light;
     Object.keys(theme).forEach(key => {
-        const value = theme[key];
-        console.log(document.documentElement);
-        document.documentElement.style.setProperty(key, value);
+        document.documentElement.style.setProperty(key, theme[key]);
     });
 };
 
