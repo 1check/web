@@ -36,7 +36,8 @@
     text-decoration-color: var(--color-navigation-link);
 }
 
-.navigation-separator {
+.navigation-container {
+    background-color: var(--color-navigation-background);
     border-bottom-color: var(--color-navigation-separator);
     border-bottom-width: thin;
     border-bottom-style: solid;

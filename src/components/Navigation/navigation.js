@@ -27,7 +27,7 @@ const BrandLink = () => (
 );
 
 const NavigationAuth = () => (
-    <Nav id="nav-container" className="navigation-container justify-content-end p-3">
+    <Nav className="justify-content-end p-3">
         <BrandLink />
         <Nav.Item>
             <LangDropDown />
@@ -45,7 +45,7 @@ const NavigationAuth = () => (
 );
 
 const NavigationNonAuth = () => (
-    <Nav id="nav-container" className="navigation-container justify-content-end p-3">
+    <Nav className="justify-content-end p-3">
         <BrandLink />
         <Nav.Item>
             <LangDropDown />
@@ -60,7 +60,7 @@ const Navigation = (props) => {
     setTheme(props);
     return (
         <>
-            <Container className="navigation-separator" fluid>
+            <Container className="navigation-container" fluid>
                 <AuthUserContext.Consumer>
                     { authUser => authUser ? <NavigationAuth {...props} /> : <NavigationNonAuth {...props} /> }
                 </AuthUserContext.Consumer>
