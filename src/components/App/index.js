@@ -13,6 +13,8 @@ import HomePage from '../Home';
 import AccountPage from '../Account';
 import AdminPage from '../Admin';
 import ApplyPage from '../Apply';
+import ApplyRestaurantPage from '../ApplyRestaurant';
+import ApplyCompanyPage from '../ApplyCompany';
 import * as ROUTES from '../../constants/routes';
 
 const App = () => (
@@ -26,6 +28,8 @@ const App = () => (
             <Route path={ROUTES.ACCOUNT} component={withNavigation(AccountPage, themes.light)} />
             <Route path={ROUTES.ADMIN} component={withNavigation(AdminPage, themes.light)} />
             <Route path={ROUTES.APPLY} component={withNavigation(ApplyPage, themes.light)} />
+            <Route path={ROUTES.APPLY_RESTAURANT} component={withNavigation(ApplyRestaurantPage, themes.light)} />
+            <Route path={ROUTES.APPLY_COMPANY} component={withNavigation(ApplyCompanyPage, themes.light)} />
         </div>
     </Router>
 );

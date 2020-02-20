@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 
 import './index.css';
-import { AuthUserContext, withAuthorization } from '../Session';
+import { withAuthorization } from '../Session';
 import STRINGS from '../../assets/lang';
 import * as ROUTES from '../../constants/routes';
 
