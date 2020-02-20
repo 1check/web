@@ -31,10 +31,10 @@ class SignUpFormBase extends Component {
         const { email, passwordOne } = this.state;
         this.setState({ clicked: true });
         this.props.firebase.doCreateUserWithEmailAndPassword(email, passwordOne).then(authUser => {
-            return this.props.firebase.user(authUser.user.uid).set({ email });
+            return this.props.firebase.user(authUser.user.uid).set({ email, hasApplied: false });
         }).then(() => {
             this.setState({ ...INITIAL_STATE });
-            this.props.history.push(ROUTES.HOME);
+            this.props.history.push(ROUTES.APPLY);
         }).catch(error => {
             this.setState({ error, clicked: false });
         });
