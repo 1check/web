@@ -24,6 +24,22 @@ class SignInFormBase extends Component {
     constructor(props) {
         super(props);
         this.state = { ...INITIAL_STATE };
+    }
+
+    onSubmit = event => {
+        const { email, password } = this.state;
+        this.setState({ clicked: true, error: '' });
+        this.props.firebase.doSignInWithEmailAndPassword(email, password).catch(error => {
+            this.setState({ ...INITIAL_STATE, clicked: false, error });
+        });
+        event.preventDefault();
+    };
+
+    onChange = event => {
+        this.setState({ [event.target.name]: event.target.value });
+    };
+
+    componentDidMount() {
         this.listener = this.props.firebase.auth.onAuthStateChanged(authUser => {
             if (authUser) {
                 this.props.firebase.user(authUser.uid).get().then(doc => {
@@ -34,21 +50,6 @@ class SignInFormBase extends Component {
             }
         });
     }
-
-    onSubmit = event => {
-        const { email, password } = this.state;
-        this.setState({ clicked: true, error: '' });
-        this.props.firebase.doSignInWithEmailAndPassword(email, password).then(() => {
-            this.setState({ ...INITIAL_STATE });
-        }).catch(error => {
-            this.setState({ clicked: false, error });
-        });
-        event.preventDefault();
-    };
-
-    onChange = event => {
-        this.setState({ [event.target.name]: event.target.value });
-    };
 
     componentWillUnmount() {
         this.listener();

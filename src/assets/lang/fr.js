@@ -46,7 +46,11 @@ const FR = {
     password_change_done: 'Password has been changed!',
     // footer
     footer_contact_us: 'Contact us',
-    footer_about_us: 'About us'
+    footer_about_us: 'About us',
+    // apply
+    apply_text: 'Here, you should to apply.',
+    apply_restaurant: 'Apply for a restaurant',
+    apply_company: 'Apply for a company'
 };
 
 export { FR_LABEL };
