@@ -24,6 +24,15 @@ class SignInFormBase extends Component {
     constructor(props) {
         super(props);
         this.state = { ...INITIAL_STATE };
+        this.listener = this.props.firebase.auth.onAuthStateChanged(authUser => {
+            if (authUser) {
+                this.props.firebase.user(authUser.uid).get().then(doc => {
+                    this.props.history.push(ROUTES.APPLY);
+                }).catch(error => {
+                    this.props.history.push(ROUTES.HOME);
+                });
+            }
+        });
     }
 
     onSubmit = event => {
@@ -31,7 +40,6 @@ class SignInFormBase extends Component {
         this.setState({ clicked: true, error: '' });
         this.props.firebase.doSignInWithEmailAndPassword(email, password).then(() => {
             this.setState({ ...INITIAL_STATE });
-            this.props.history.push(ROUTES.HOME);
         }).catch(error => {
             this.setState({ clicked: false, error });
         });
@@ -41,6 +49,10 @@ class SignInFormBase extends Component {
     onChange = event => {
         this.setState({ [event.target.name]: event.target.value });
     };
+
+    componentWillUnmount() {
+        this.listener();
+    }
 
     render() {
         const { email, password, error, clicked } = this.state;

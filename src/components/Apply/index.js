@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import './index.css';
 
-class Apply extends Component {
+class ApplyPage extends Component {
     render() {
         return (
             <h2>Apply Here</h2>
@@ -11,4 +11,4 @@ class Apply extends Component {
 }
 
 
-export default Apply;
+export default ApplyPage;

@@ -12,6 +12,7 @@ import PasswordForgetPage from '../PasswordForget';
 import HomePage from '../Home';
 import AccountPage from '../Account';
 import AdminPage from '../Admin';
+import ApplyPage from '../Apply';
 import * as ROUTES from '../../constants/routes';
 
 const App = () => (
@@ -24,6 +25,7 @@ const App = () => (
             <Route path={ROUTES.HOME} component={withNavigation(HomePage, themes.light)} />
             <Route path={ROUTES.ACCOUNT} component={withNavigation(AccountPage, themes.light)} />
             <Route path={ROUTES.ADMIN} component={withNavigation(AdminPage, themes.light)} />
+            <Route path={ROUTES.APPLY} component={withNavigation(ApplyPage, themes.light)} />
         </div>
     </Router>
 );
